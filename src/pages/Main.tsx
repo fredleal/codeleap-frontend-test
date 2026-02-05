@@ -46,6 +46,7 @@ export function Main() {
       updatePost(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] })
+      setEditingPost(null)
     },
   })
 
@@ -53,6 +54,7 @@ export function Main() {
     mutationFn: deletePost,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] })
+      setDeletingPost(null)
     },
   })
 
