@@ -11,7 +11,7 @@ import { DeleteModal } from '../components/DeleteModal'
 import type { Post } from '../types/post'
 
 export function Main() {
-  const { username, isLoggedIn } = useUser()
+  const { username, isLoggedIn, logout } = useUser()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   
@@ -79,13 +79,19 @@ export function Main() {
   return (
     <div className="min-h-screen bg-[#DDDDDD]">
       <div className="max-w-[800px] mx-auto bg-white min-h-screen">
-        <header className="bg-[#7695EC] h-20 flex items-center px-9">
-          <h1 className="text-[22px] font-bold text-white">CodeLeap Network</h1>
+        <header className="bg-[#7695EC] h-20 flex items-center justify-between px-4 sm:px-9">
+          <h1 className="text-lg sm:text-[22px] font-bold text-white">CodeLeap Network</h1>
+          <button
+            onClick={logout}
+            className="text-white text-sm hover:underline cursor-pointer"
+          >
+            Logout
+          </button>
         </header>
 
-        <div className="p-6 space-y-6">
-          <div className="border border-[#999] rounded-2xl p-6">
-            <h2 className="text-[22px] font-bold mb-6">What's on your mind?</h2>
+        <div className="p-4 sm:p-6 space-y-6">
+          <div className="border border-[#999] rounded-2xl p-4 sm:p-6">
+            <h2 className="text-lg sm:text-[22px] font-bold mb-6">What's on your mind?</h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <Input
